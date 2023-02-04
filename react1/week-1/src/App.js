@@ -1,13 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Child from './Child'
 
-// 이 파일이 우리의 PG
 function App() {
-  return (
-    <div className="App">
-      <p>Hello React !!</p>
-    </div>
-  );
+  const name = 'test'
+  return <Child 
+            // age={21} 
+            name={name}>이름
+          </Child>
 }
 
-export default App;
+export default App
