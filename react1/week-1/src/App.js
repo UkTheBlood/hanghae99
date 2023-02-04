@@ -1,34 +1,21 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 
 function App() {
-  // id와 password state 만들기
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onIdChangeHandler = (event) => {
-    setId(event.target.value)
-  }
-
-  const onPasswordChangeHandler = (event) => {
-    setPassword(event.target.value)
-  }
-
+  const [obj, setObj] = useState({
+    name: "wonjang",
+    age: 21,
+  });
   return (
     <div>
-      아이디: <input value = {id} onChange ={onIdChangeHandler}/>
-
-      <br />
-
-      비밀번호: <input value = {password} type = "password" onChange={onPasswordChangeHandler}/>
-
-      <br />
-
-      <button onClick={function () {
-        alert(`고객님이 입력하신 아이디는 ${id}이며 비밀번호는 ${password}입니다.`)
-        setId('')
-        setPassword('')
-      }}>
-        로그인</button>
+      <div>{obj.name}</div>
+      <button onClick={() => {
+        // 새로운 객체를 만들어야 함
+        obj.name = 'twojang'
+        const obj2 = {...obj};  // obj를 복사하는데 완전 새로운 주솟값을 만들어
+        setObj(obj2);
+        // obj.name = 'twojang'
+        // setObj();
+      }}>변경!</button>
     </div>
   )
 }
