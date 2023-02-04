@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const squareStyle = {
+    width: "100px",
+    height: "100px",
+    border: "1px solid green",
+    borderRadius: "10px",
+		display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-style">
+      <div className="component-style">감자</div>
+      <div className="component-style">고구마</div>
+      <div className="component-style">오이</div>
+      <div className="component-style">가지</div>
+      <div className="component-style">옥수수</div>
     </div>
   );
-}
+};
 
 export default App;
