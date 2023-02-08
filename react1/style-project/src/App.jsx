@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import './App.css';
+import Button from "./components/Button";
+import User from "./components/User";
 
 const App = () => {
 
@@ -20,7 +22,7 @@ const App = () => {
   const ageChangeHandler = (event) => {
     setAge(event.target.value);
   }
-  
+
   // 추가 버튼 클릭
   const clickAddButtonHandler = () => {
     // 1. 새로운 형태의 이것을 만든다.
@@ -31,16 +33,16 @@ const App = () => {
       age,
       name,
     }
-  
-    setUsers([...users, newUser])      
+
+    setUsers([...users, newUser])
     // 불변성을 유지하기 위해
     // users의 배열을 나열한 후 newUser이라는 값을 추가하여 set한다.
   }
 
   // 삭제 버튼 클릭(X)
   const clickRemoveButtonHandler = (id) => {
-    const newUsers = users.filter(function(user) {
-      return user.id !==id
+    const newUsers = users.filter(function (user) {
+      return user.id !== id
     });
     setUsers(newUsers);
   }
@@ -60,22 +62,22 @@ const App = () => {
         />
       </div>
       <br />
-      <button onClick={clickAddButtonHandler}>추가 !</button>
+      <Button clickAddButtonHandler={clickAddButtonHandler}>추가</Button>
       <div className="app-style">
         {
           users.map(item => {
             // map함수를 쓸 떄 반복적으로 return하는 부분은 반드시 key 태그를 붙여줘야 함
-            return (
-              <div key={item.id} className="component-style">
-                {item.age} - {item.name}
-                <button onClick={() => clickRemoveButtonHandler(item.id)}>X</button>
-              </div>
-            )
+            return <User
+              item={item}
+              reMoveFunction={clickRemoveButtonHandler}
+              key={item.id} />
           })
         }
       </div>
     </div>
   );
 };
+
+
 
 export default App;
