@@ -7,10 +7,15 @@ const style = {
     color: 'white',
 }
 
-function box1() {
+function box1({ initCount }) {
     console.log('Box1 컴포넌트가 렌더링 됐습니다')
     return (
-        <div style={style}>box1</div>
+        <div style={style}>
+            <button onClick={() => {
+                initCount();
+            }}>
+                초기화</button>
+        </div>
     )
 }
 
