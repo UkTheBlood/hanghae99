@@ -1,9 +1,12 @@
-import './App.css';
 import React from 'react';
-import GrandFather from './components/GrandFather';
 
 function App() {
-  return <GrandFather />
+
+  return (
+    <>
+      
+    </>
+  )
 }
 
 export default App;
