@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {console.log('Hello')
 
     return () => {
-      // 이 부분에 작성하면 컴포넌트가 사라질 때 작동힘 (clean up)
+      // 이 부분에 작성하면 컴포넌트가 사라질 때 작동힘 (clean up) 
     }
   }, [value]);
 
