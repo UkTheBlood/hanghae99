@@ -1,0 +1,13 @@
+1. 페이지 컴포넌트를 작성 -> 다중 페이지
+2. Router.js 파일 생성, router를 구성하느 ㄴ설정 코드 작성
+3. App.jsx import를 하고 적용
+4. 페이지 이동 테스트
+
+localhost:3000/home
+localhost:3000/about
+localhost:3000/contact
+
+useNavigate
+어떤 버튼이나 컴포넌트를 눌렀을 때, 페이지로 이동
+
+useLocation
