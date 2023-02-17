@@ -1,6 +1,101 @@
 // action value
 
-// import { createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+// 2개의 input
+// (1) 이름 : 의미는 크게 없음
+// (2) 함수
+export const __addNumber = createAsyncThunk(
+    "ADD_NUMBER_WAIT",
+    // 인자 2개 (컴포넌트에서 보내줄 payload, thunk가 가지고 있는 내장 기능 객체)
+    (payload, thunkAPI) => {
+        // 수행하고싶은 동작 : 3초 기다리기
+        setTimeout(() => {
+            thunkAPI.dispatch(addNumber(payload))
+        }, 3000)
+    }
+);
+
+export const __minusNumber = createAsyncThunk(
+    "MINUS_NUMBER_WAIT",
+    // 인자 2개 (컴포넌트에서 보내줄 payload, thunk가 가지고 있는 내장 기능 객체)
+    (payload, thunkAPI) => {
+        // 수행하고싶은 동작 : 3초 기다리기
+        setTimeout(() => {
+            thunkAPI.dispatch(minusNumber(payload))
+        }, 3000)
+    }
+);
+
+
+
+// 초기 상태값 (state)
+const initialState = {
+    number: 0,
+    // const [number. setNumberr] = useState(0); 에서 0이 위에처럼 들어옴
+};
+
+
+
+const counterSlice = createSlice({
+    name: 'counter',
+    initialState: initialState,
+    reducers: {
+        addNumber: (state, action) => {
+            state.number = state.number + action.payload
+        },
+        minusNumber: (state, action) => {
+            state.number = state.number - action.payload
+        },
+    },
+});
+
+export default counterSlice.reducer;
+
+export const {addNumber, minusNumber} = counterSlice.actions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ########################################################################
 
 // export를 통해 다른 파일에서도 사용 가능하게
 // const PLUS_ONE = "counter/PLUS_ONE"
@@ -32,11 +127,16 @@
 //     }
 // }
 
+
+
 // 초기 상태값 (state)
-const initialState = {
-    number: 0,
+// const initialState = {
+//     number: 0,
     // const [number. setNumberr] = useState(0); 에서 0이 위에처럼 들어옴
-};
+// };
+
+
+
 
 // 리듀서 : 'state에 변화'를 일으키는 함수
 // input에는 2가지 : state와 action
@@ -69,20 +169,3 @@ const initialState = {
 //             return state;
 //     }
 // }
-
-const counterSlice = createSlice({
-    name: 'counter',
-    initialState: initialState,
-    reducers: {
-        addNumber: (state, action) => {
-            state.number = state.number + action.payload
-        },
-        minusNumber: (state, action) => {
-            state.number = state.number - action.payload
-        },
-    },
-});
-
-export default counterSlice.reducer;
-
-export const {addNumber, minusNumber} = counterSlice.actions

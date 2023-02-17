@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addNumber, minusNumber, plusOne } from './redux/config/modules/counter';
 import './App.css';
 import { useEffect, useState } from 'react';
+import { __addNumber, __minusNumber } from './redux/config/modules/counter';
+
 function App() {
   const [number, setNumber] = useState(0);
 
@@ -37,14 +39,15 @@ function App() {
       <button onClick={() => {
         // action에는 객체가 들어가야 하는데, plusOne 함수가 객체를 반환하기 때문에 문제 X
         // dispatch(plusOne());
-        dispatch(addNumber(number))
+        // dispatch(addNumber(number))
+        dispatch(__addNumber(number))
       }}> + </button>
       <button onClick={() => {
         // dispatch({
         //   type: MINUS_ONE
         // })
 
-        dispatch(minusNumber(number));
+        dispatch(__minusNumber(number));
       }}> - </button>
     </>
 
